@@ -40,168 +40,170 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[50], // สีพื้นหลังของหน้า
+    return SafeArea( // <<< เพิ่ม SafeArea ที่ครอบ Scaffold ทั้งหน้า
+      child: Scaffold(
+        backgroundColor: Colors.grey[50], // สีพื้นหลังของหน้า
 
-      body: Column( // Layout แนวตั้ง
-        children: [
-          // -------------------------------------------------------------------
-          // ส่วน Header (โปรไฟล์ด้านบน)
-          // -------------------------------------------------------------------
-          Container(
-            width: double.infinity, // ให้กว้างเต็มหน้าจอ
-            color: Colors.grey[200], // สีพื้นหลังของส่วน Header
-            padding: const EdgeInsets.only(top: 50, bottom: 40),
-            // เว้นระยะห่างด้านบนและล่าง
-            child: Column(
-              children: [
-                const Text(
-                  "Personal Information", // ข้อความหัวข้อหน้า
-                  style: TextStyle(
-                    fontSize: 24, // ขนาดตัวอักษรใหญ่
-                    fontWeight: FontWeight.bold, // ตัวหนา
-                    color: Colors.black,
-                  ),
-                ),
-
-                const SizedBox(height: 20), // เว้นระยะห่าง
-
-                // ------------------ รูปโปรไฟล์ ------------------
-                Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle, // รูปวงกลม
-                    border: Border.all(color: Colors.grey, width: 4),
-                    // เส้นขอบสีเทา
-                  ),
-                  child: ClipOval(
-                    child: Image.network(
-                      'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
-                      // รูปโปรไฟล์จากอินเทอร์เน็ต
-                      height: 100,
-                      width: 100,
-                      fit: BoxFit.cover, // ครอบรูปให้เต็มวงกลม
+        body: Column( // Layout แนวตั้ง
+          children: [
+            // -------------------------------------------------------------------
+            // ส่วน Header (โปรไฟล์ด้านบน)
+            // -------------------------------------------------------------------
+            Container(
+              width: double.infinity, // ให้กว้างเต็มหน้าจอ
+              color: Colors.grey[200], // สีพื้นหลังของส่วน Header
+              padding: const EdgeInsets.only(top: 50, bottom: 40),
+              // เว้นระยะห่างด้านบนและล่าง
+              child: Column(
+                children: [
+                  const Text(
+                    "Personal Information", // ข้อความหัวข้อหน้า
+                    style: TextStyle(
+                      fontSize: 24, // ขนาดตัวอักษรใหญ่
+                      fontWeight: FontWeight.bold, // ตัวหนา
+                      color: Colors.black,
                     ),
                   ),
-                ),
 
-                const SizedBox(height: 10),
+                  const SizedBox(height: 20), // เว้นระยะห่าง
 
-                // ------------------ ชื่อผู้ใช้ ------------------
-                const Text(
-                  "Thawichai Klaewkla",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                  // ------------------ รูปโปรไฟล์ ------------------
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle, // รูปวงกลม
+                      border: Border.all(color: Colors.grey, width: 4),
+                      // เส้นขอบสีเทา
+                    ),
+                    child: ClipOval(
+                      child: Image.network(
+                        'https://cdn-icons-png.flaticon.com/512/1077/1077114.png',
+                        // รูปโปรไฟล์จากอินเทอร์เน็ต
+                        height: 100,
+                        width: 100,
+                        fit: BoxFit.cover, // ครอบรูปให้เต็มวงกลม
+                      ),
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 5),
+                  const SizedBox(height: 10),
 
-                // ------------------ Email ------------------
-                const Text(
-                  "Thawichai.klaekle@e-tech.ac.th",
-                  style: TextStyle(fontSize: 14),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  // ------------------ ชื่อผู้ใช้ ------------------
+                  const Text(
+                    "Thawichai Klaewkla",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  const SizedBox(height: 5),
+
+                  // ------------------ Email ------------------
+                  const Text(
+                    "Thawichai.klaekle@e-tech.ac.th",
+                    style: TextStyle(fontSize: 14),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          // -------------------------------------------------------------------
-          // ส่วน Body ที่เลื่อน Scroll ได้
-          // -------------------------------------------------------------------
-          Expanded(
-            child: SingleChildScrollView( // เพื่อให้เลื่อนเนื้อหาได้
-              child: Padding(
-                padding: const EdgeInsets.all(16.0), // padding รอบๆทั้งหมด
-                child: Column(
-                  children: [
-                    // -----------------------------------------------------------
-                    // Card แสดงข้อมูลส่วนตัว
-                    // -----------------------------------------------------------
-                    Card(
-                      color: Colors.grey[100], // สีพื้นหลังของการ์ด
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ), // เว้นระยะการ์ดจากขอบ
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0), // padding ภายในการ์ด
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Personal Details",
-                              // หัวข้อการ์ด
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+            // -------------------------------------------------------------------
+            // ส่วน Body ที่เลื่อน Scroll ได้
+            // -------------------------------------------------------------------
+            Expanded(
+              child: SingleChildScrollView( // เพื่อให้เลื่อนเนื้อหาได้
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0), // padding รอบๆทั้งหมด
+                  child: Column(
+                    children: [
+                      // -----------------------------------------------------------
+                      // Card แสดงข้อมูลส่วนตัว
+                      // -----------------------------------------------------------
+                      Card(
+                        color: Colors.grey[100], // สีพื้นหลังของการ์ด
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ), // เว้นระยะการ์ดจากขอบ
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0), // padding ภายในการ์ด
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Personal Details",
+                                // หัวข้อการ์ด
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
+
+                              const SizedBox(height: 16),
+
+                              // ----------------- PHONE -----------------
+                              rowItem(Icons.phone, "Phone", "097-937-7374"),
+
+                              const SizedBox(height: 16),
+
+                              // ----------------- BIRTHDAY -----------------
+                              rowItem(Icons.cake, "Birthday", "30 Nov 2005"),
+
+                              const SizedBox(height: 16),
+
+                              // ----------------- ADDRESS -----------------
+                              rowItem(Icons.home, "Address", "PhanThong, Chonburi"),
+
+                              const SizedBox(height: 16),
+
+                              // ----------------- EDUCATION -----------------
+                              rowItem(Icons.school, "Education",
+                                  "Eastern College of Technology"),
+
+                              const SizedBox(height: 16),
+
+                              // ----------------- POSITION -----------------
+                              rowItem(Icons.work, "Position", "Developer"),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // -----------------------------------------------------------
+                      // ปุ่มไปหน้า Instagram Page
+                      // -----------------------------------------------------------
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          // จัดปุ่มให้อยู่กลาง
+                          children: [
+                            ElevatedButton(
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/PersonalData'),
+                              // เมื่อกด → เปลี่ยนหน้าไป SecondPage
+
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepPurple,
+                                // สีปุ่ม
+                                foregroundColor: Colors.white,
+                                // สีตัวอักษรบนปุ่ม
+                              ),
+                              child: const Text('Instagram Page'),
                             ),
-
-                            const SizedBox(height: 16),
-
-                            // ----------------- PHONE -----------------
-                            rowItem(Icons.phone, "Phone", "097-937-7374"),
-
-                            const SizedBox(height: 16),
-
-                            // ----------------- BIRTHDAY -----------------
-                            rowItem(Icons.cake, "Birthday", "30 Nov 2005"),
-
-                            const SizedBox(height: 16),
-
-                            // ----------------- ADDRESS -----------------
-                            rowItem(Icons.home, "Address", "PhanThong, Chonburi"),
-
-                            const SizedBox(height: 16),
-
-                            // ----------------- EDUCATION -----------------
-                            rowItem(Icons.school, "Education",
-                                "Eastern College of Technology"),
-
-                            const SizedBox(height: 16),
-
-                            // ----------------- POSITION -----------------
-                            rowItem(Icons.work, "Position", "Developer"),
                           ],
                         ),
                       ),
-                    ),
-
-                    // -----------------------------------------------------------
-                    // ปุ่มไปหน้า Instagram Page
-                    // -----------------------------------------------------------
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // จัดปุ่มให้อยู่กลาง
-                        children: [
-                          ElevatedButton(
-                            onPressed: () =>
-                                Navigator.pushNamed(context, '/PersonalData'),
-                            // เมื่อกด → เปลี่ยนหน้าไป SecondPage
-
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.deepPurple,
-                              // สีปุ่ม
-                              foregroundColor: Colors.white,
-                              // สีตัวอักษรบนปุ่ม
-                            ),
-                            child: const Text('Instagram Page'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
-    );
+    ); // <<< ปิด SafeArea
   }
 
   // ---------------------------------------------------------------------------
@@ -236,7 +238,6 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
 
 
 // ----------------- SECOND PAGE (Instagram-like) ----------------- //
@@ -274,256 +275,260 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ],
       ),
-      body: SingleChildScrollView( // ทำให้เนื้อหาทั้งหมดสามารถเลื่อนลงได้
-        child: Column(
-          children: [
-            const SizedBox(height: 10), // ช่องว่างด้านบนเล็กน้อย
 
-            // ----------------- PROFILE HEADER -----------------
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16), // เว้นขอบซ้ายขวา
-              child: Row( // วางรูปโปรไฟล์กับสถิติเป็นแนวนอน
-                children: [
-                  // Profile Image → แตะเพื่อเปิด Story Viewer
-                  GestureDetector(
-                    onTap: () => _openStoryView(), // เมื่อกดที่รูป → เปิด Story viewer
-                    child: Container(
-                      decoration: BoxDecoration( // กำหนดการตกแต่งให้กับรอบรูป
-                        shape: BoxShape.circle, // ให้เป็นวงกลม
-                        border: Border.all( // ขอบวงกลม
-                          color: Colors.pink, // สีขอบเป็นชมพู
-                          width: 2, // ความหนาขอบ 2
-                        ),
-                      ),
-                      child: ClipOval( // ตัดรูปให้เป็นวงกลมจริง ๆ
-                        child: Image.network(
-                          'https://i.pinimg.com/236x/85/38/7b/85387bd21f562a445e19e381c8f7b2d2.jpg', // ลิงก์รูป
-                          width: 80, // ความกว้างรูป
-                          height: 80, // ความสูงรูป
-                          fit: BoxFit.cover, // ครอบรูปเต็มพื้นที่
-                          errorBuilder: (context, error, stackTrace) { // ถ้าดึงรูปไม่สำเร็จ
-                            // ถ้าโหลดรูปไม่สำเร็จ จะแสดง Icon คนแทน
-                            return Container(
-                              width: 80, // กำหนดขนาดทดแทน
-                              height: 80,
-                              color: Colors.grey, // พื้นหลังสีเทา
-                              child: const Icon(Icons.person,
-                                  size: 50, color: Colors.white), // ไอคอนคน
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 30), // ช่องว่างระหว่างรูปกับสถิติ
+      // ⭐⭐⭐ เพิ่ม SafeArea แบบคลุมทั้งส่วนของ body ⭐⭐⭐
+      body: SafeArea(
+        child: SingleChildScrollView( // ทำให้เนื้อหาทั้งหมดสามารถเลื่อนลงได้
+          child: Column(
+            children: [
+              const SizedBox(height: 10), // ช่องว่างด้านบนเล็กน้อย
 
-                  // Stats (Posts / Followers / Following)
-                  Expanded( // ขยายคอลัมน์สถิติให้ใช้พื้นที่ที่เหลือ
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround, // กระจายช่องว่างเท่า ๆ กัน
-                      children: [
-                        _buildStatColumn("2", "Post"), // จำนวนโพสต์
-                        _buildStatColumn("28", "Follower"), // จำนวนผู้ติดตาม
-                        _buildStatColumn("32", "Following"), // จำนวนที่กำลังติดตาม
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 12), // ช่องว่างถัดมา
-
-            // ----------------- USERNAME & BIO -----------------
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16), // เว้นซ้ายขวา
-              child: Column( // จัดข้อความชื่อและ bio เป็นแนวตั้ง
-                crossAxisAlignment: CrossAxisAlignment.start, // จัดชิดซ้าย
-                children: [
-                  // ชื่อ + Verified
-                  Row(
-                    children: const [
-                      Text(
-                        "Thawichai_Klaekle", // ข้อความชื่อผู้ใช้
-                        style: TextStyle(
-                          fontSize: 15, // ขนาดฟอนต์
-                          color: Colors.white, // สีขาว
-                          fontWeight: FontWeight.w600, // น้ำหนักตัวอักษร
-                        ),
-                      ),
-                      SizedBox(width: 6), // ช่องว่างเล็กระหว่างชื่อกับไอคอน
-                      Icon(Icons.verified, color: Colors.blue, size: 16), // เครื่องหมาย verified สีฟ้า
-                    ],
-                  ),
-                  const SizedBox(height: 4), // ช่องว่างเล็ก
-
-                  // Bio / TikTok ID
-                  Row(
-                    children: const [
-                      Icon(Icons.tiktok, color: Colors.white, size: 16), // ไอคอน TikTok (หากมี)
-                      SizedBox(width: 6), // ช่องว่าง
-                      Text(
-                        "thawichai.klaekle", // ข้อความแสดง ID หรือ bio สั้น ๆ
-                        style: TextStyle(
-                          color: Colors.white70, // สีขาวโปร่งแสง
-                          fontSize: 14, // ขนาดฟอนต์
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 16), // ช่องว่าง
-
-            // ----------------- ACTION BUTTONS -----------------
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16), // เว้นซ้ายขวาของปุ่ม
-              child: Row( // แถวสำหรับปุ่ม Follow / Invite / More
-                children: [
-                  // Follow Button
-                  Expanded( // ให้ปุ่ม Follow ขยายเต็มพื้นที่ที่เหลือ
-                    child: GestureDetector(
-                      onLongPress: _showUnfollowMenu, // กดค้างเพื่อแสดงเมนู Unfollow
-                      child: ElevatedButton( // ปุ่มหลัก Follow / Following
-                        onPressed: _toggleFollow, // เมื่อกด → สลับสถานะ Follow
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: isFollowing
-                              ? const Color(0xFF262626) // หากกำลัง Following ให้ปุ่มเป็นสีเข้ม
-                              : Colors.white, // หากยังไม่ได้ Follow ให้เป็นสีขาว
-                          foregroundColor:
-                          isFollowing ? Colors.white : Colors.black, // สีตัวอักษรตามสถานะ
-                          padding: const EdgeInsets.symmetric(vertical: 8), // ระยะบนล่างของปุ่ม
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8), // ขอบโค้งของปุ่ม
-                          ),
-                        ),
-                        child: Text(
-                          isFollowing ? "Following" : "Follow", // แสดงข้อความตามสถานะ
-                          style: const TextStyle(
-                            fontSize: 14, // ขนาดฟอนต์ของข้อความในปุ่ม
-                            fontWeight: FontWeight.bold, // ตัวหนา
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8), // ช่องว่างระหว่างปุ่ม
-
-                  // Invite Button (สี่เหลี่ยมเล็ก)
-                  _actionSquareButton(
-                    Icons.person_add_outlined, // ไอคอนเชิญ
-                    onTap: _openInviteMenu, // เมื่อกด → เปิดเมนูเชิญ
-                  ),
-                  const SizedBox(width: 8), // ช่องว่าง
-
-                  // More Options Button (สี่เหลี่ยมเล็ก)
-                  _actionSquareButton(
-                    Icons.keyboard_arrow_down, // ไอคอนลูกศรลง
-                    onTap: _openArrowMenu, // เมื่อกด → เปิดเมนูเพิ่มเติม
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 24), // ช่องว่างก่อน Tab bar
-
-            // ----------------- TAB BAR -----------------
-            Container(
-              decoration: const BoxDecoration( // ตกแต่งขอบบนของพื้นที่แท็บ
-                border: Border(
-                  top: BorderSide(color: Color(0xFF262626), width: 0.5), // เส้นขอบบนสีเข้มบาง ๆ
-                ),
-              ),
-              child: Row( // แถวสำหรับปุ่มแท็บ
-                children: [
-                  // Tab 0 → Posts
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() => selectedTab = 0); // เมื่อกด → ตั้ง selectedTab เป็น 0
-                      },
+              // ----------------- PROFILE HEADER -----------------
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16), // เว้นขอบซ้ายขวา
+                child: Row( // วางรูปโปรไฟล์กับสถิติเป็นแนวนอน
+                  children: [
+                    // Profile Image → แตะเพื่อเปิด Story Viewer
+                    GestureDetector(
+                      onTap: () => _openStoryView(), // เมื่อกดที่รูป → เปิด Story viewer
                       child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 12), // เว้นบนล่างเล็กน้อย
-                        decoration: BoxDecoration( // ตกแต่งเส้นใต้เมื่อถูกเลือก
-                          border: Border(
-                            bottom: BorderSide(
-                              color: selectedTab == 0 ? Colors.white : Colors.transparent, // ขีดใต้ถ้าเลือก
-                              width: 1, // ความหนาของเส้นใต้
-                            ),
+                        decoration: BoxDecoration( // กำหนดการตกแต่งให้กับรอบรูป
+                          shape: BoxShape.circle, // ให้เป็นวงกลม
+                          border: Border.all( // ขอบวงกลม
+                            color: Colors.pink, // สีขอบเป็นชมพู
+                            width: 2, // ความหนาขอบ 2
                           ),
                         ),
-                        child: Icon(
-                          Icons.grid_on_outlined, // ไอคอนตารางโพสต์
-                          color: selectedTab == 0 ? Colors.white : const Color(0xFF737373), // สีตามสถานะ
-                          size: 26, // ขนาดไอคอน
+                        child: ClipOval( // ตัดรูปให้เป็นวงกลมจริง ๆ
+                          child: Image.network(
+                            'https://i.pinimg.com/236x/85/38/7b/85387bd21f562a445e19e381c8f7b2d2.jpg', // ลิงก์รูป
+                            width: 80, // ความกว้างรูป
+                            height: 80, // ความสูงรูป
+                            fit: BoxFit.cover, // ครอบรูปเต็มพื้นที่
+                            errorBuilder: (context, error, stackTrace) { // ถ้าดึงรูปไม่สำเร็จ
+                              // ถ้าโหลดรูปไม่สำเร็จ จะแสดง Icon คนแทน
+                              return Container(
+                                width: 80, // กำหนดขนาดทดแทน
+                                height: 80,
+                                color: Colors.grey, // พื้นหลังสีเทา
+                                child: const Icon(Icons.person,
+                                    size: 50, color: Colors.white), // ไอคอนคน
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  // Tab 1 → Reels
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() => selectedTab = 1); // เมื่อกด → ตั้ง selectedTab เป็น 1
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 12), // เว้นบนล่าง
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: selectedTab == 1 ? Colors.white : Colors.transparent, // ขีดใต้ถ้าเลือก
-                              width: 1, // ความหนา
-                            ),
-                          ),
-                        ),
-                        child: Icon(
-                          Icons.play_circle_outline, // ไอคอน Reels
-                          color: selectedTab == 1 ? Colors.white : const Color(0xFF737373), // สีตามสถานะ
-                          size: 26, // ขนาดไอคอน
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                    const SizedBox(width: 30), // ช่องว่างระหว่างรูปกับสถิติ
 
-            // ----------------- TAB CONTENT -----------------
-            if (selectedTab == 0)
-            // TAB 0 → POSTS GRID (ถ้าเลือก tab 0)
-              GridView.count(
-                crossAxisCount: 2, // จำนวนคอลัมน์ในกริด = 2
-                shrinkWrap: true, // ให้ Grid มีขนาดพอดีกับเนื้อหา (ไม่ stretch)
-                physics: const NeverScrollableScrollPhysics(), // ปิดการเลื่อนภายใน Grid เพื่อให้ Column ควบคุมการเลื่อน
-                crossAxisSpacing: 2, // ระยะห่างแนวนอนระหว่างรูป
-                mainAxisSpacing: 2, // ระยะห่างแนวตั้งระหว่างรูป
-                children: [
-                  _imageBox("https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500"), // รูปตัวอย่างที่ 1
-                  _imageBox("https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500"), // รูปตัวอย่างที่ 2
-                ],
-              )
-            else
-            // TAB 1 → REELS PAGE (ถ้าเลือก tab 1)
-              Container(
-                height: 300, // ความสูงสำหรับหน้า Reels ชั่วคราว
-                alignment: Alignment.center, // จัด widget ตรงกลาง
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center, // จัดแนวกลางทั้งแนวตั้ง
-                  children: const [
-                    Icon(Icons.play_circle_outline, color: Colors.white, size: 80), // ไอคอนเล่นใหญ่
-                    SizedBox(height: 12), // ช่องว่าง
-                    Text(
-                      "Reels", // ข้อความแสดงว่าเป็น Reels
-                      style: TextStyle(color: Colors.white70, fontSize: 16),
+                    // Stats (Posts / Followers / Following)
+                    Expanded( // ขยายคอลัมน์สถิติให้ใช้พื้นที่ที่เหลือ
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround, // กระจายช่องว่างเท่า ๆ กัน
+                        children: [
+                          _buildStatColumn("2", "Post"), // จำนวนโพสต์
+                          _buildStatColumn("28", "Follower"), // จำนวนผู้ติดตาม
+                          _buildStatColumn("32", "Following"), // จำนวนที่กำลังติดตาม
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
 
-            const SizedBox(height: 20), // ช่องว่างด้านล่างสุด
-          ],
+              const SizedBox(height: 12), // ช่องว่างถัดมา
+
+              // ----------------- USERNAME & BIO -----------------
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16), // เว้นซ้ายขวา
+                child: Column( // จัดข้อความชื่อและ bio เป็นแนวตั้ง
+                  crossAxisAlignment: CrossAxisAlignment.start, // จัดชิดซ้าย
+                  children: [
+                    // ชื่อ + Verified
+                    Row(
+                      children: const [
+                        Text(
+                          "Thawichai_Klaekle", // ข้อความชื่อผู้ใช้
+                          style: TextStyle(
+                            fontSize: 15, // ขนาดฟอนต์
+                            color: Colors.white, // สีขาว
+                            fontWeight: FontWeight.w600, // น้ำหนักตัวอักษร
+                          ),
+                        ),
+                        SizedBox(width: 6), // ช่องว่างเล็กระหว่างชื่อกับไอคอน
+                        Icon(Icons.verified, color: Colors.blue, size: 16), // เครื่องหมาย verified สีฟ้า
+                      ],
+                    ),
+                    const SizedBox(height: 4), // ช่องว่างเล็ก
+
+                    // Bio / TikTok ID
+                    Row(
+                      children: const [
+                        Icon(Icons.tiktok, color: Colors.white, size: 16), // ไอคอน TikTok (หากมี)
+                        SizedBox(width: 6), // ช่องว่าง
+                        Text(
+                          "thawichai.klaekle", // ข้อความแสดง ID หรือ bio สั้น ๆ
+                          style: TextStyle(
+                            color: Colors.white70, // สีขาวโปร่งแสง
+                            fontSize: 14, // ขนาดฟอนต์
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 16), // ช่องว่าง
+
+              // ----------------- ACTION BUTTONS -----------------
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16), // เว้นซ้ายขวาของปุ่ม
+                child: Row( // แถวสำหรับปุ่ม Follow / Invite / More
+                  children: [
+                    // Follow Button
+                    Expanded( // ให้ปุ่ม Follow ขยายเต็มพื้นที่ที่เหลือ
+                      child: GestureDetector(
+                        onLongPress: _showUnfollowMenu, // กดค้างเพื่อแสดงเมนู Unfollow
+                        child: ElevatedButton( // ปุ่มหลัก Follow / Following
+                          onPressed: _toggleFollow, // เมื่อกด → สลับสถานะ Follow
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: isFollowing
+                                ? const Color(0xFF262626) // หากกำลัง Following ให้ปุ่มเป็นสีเข้ม
+                                : Colors.white, // หากยังไม่ได้ Follow ให้เป็นสีขาว
+                            foregroundColor:
+                            isFollowing ? Colors.white : Colors.black, // สีตัวอักษรตามสถานะ
+                            padding: const EdgeInsets.symmetric(vertical: 8), // ระยะบนล่างของปุ่ม
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8), // ขอบโค้งของปุ่ม
+                            ),
+                          ),
+                          child: Text(
+                            isFollowing ? "Following" : "Follow", // แสดงข้อความตามสถานะ
+                            style: const TextStyle(
+                              fontSize: 14, // ขนาดฟอนต์ของข้อความในปุ่ม
+                              fontWeight: FontWeight.bold, // ตัวหนา
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8), // ช่องว่างระหว่างปุ่ม
+
+                    // Invite Button (สี่เหลี่ยมเล็ก)
+                    _actionSquareButton(
+                      Icons.person_add_outlined, // ไอคอนเชิญ
+                      onTap: _openInviteMenu, // เมื่อกด → เปิดเมนูเชิญ
+                    ),
+                    const SizedBox(width: 8), // ช่องว่าง
+
+                    // More Options Button (สี่เหลี่ยมเล็ก)
+                    _actionSquareButton(
+                      Icons.keyboard_arrow_down, // ไอคอนลูกศรลง
+                      onTap: _openArrowMenu, // เมื่อกด → เปิดเมนูเพิ่มเติม
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 24), // ช่องว่างก่อน Tab bar
+
+              // ----------------- TAB BAR -----------------
+              Container(
+                decoration: const BoxDecoration( // ตกแต่งขอบบนของพื้นที่แท็บ
+                  border: Border(
+                    top: BorderSide(color: Color(0xFF262626), width: 0.5), // เส้นขอบบนสีเข้มบาง ๆ
+                  ),
+                ),
+                child: Row( // แถวสำหรับปุ่มแท็บ
+                  children: [
+                    // Tab 0 → Posts
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() => selectedTab = 0); // เมื่อกด → ตั้ง selectedTab เป็น 0
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 12), // เว้นบนล่างเล็กน้อย
+                          decoration: BoxDecoration( // ตกแต่งเส้นใต้เมื่อถูกเลือก
+                            border: Border(
+                              bottom: BorderSide(
+                                color: selectedTab == 0 ? Colors.white : Colors.transparent, // ขีดใต้ถ้าเลือก
+                                width: 1, // ความหนาของเส้นใต้
+                              ),
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.grid_on_outlined, // ไอคอนตารางโพสต์
+                            color: selectedTab == 0 ? Colors.white : const Color(0xFF737373), // สีตามสถานะ
+                            size: 26, // ขนาดไอคอน
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Tab 1 → Reels
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() => selectedTab = 1); // เมื่อกด → ตั้ง selectedTab เป็น 1
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 12), // เว้นบนล่าง
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: selectedTab == 1 ? Colors.white : Colors.transparent, // ขีดใต้ถ้าเลือก
+                                width: 1, // ความหนา
+                              ),
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.play_circle_outline, // ไอคอน Reels
+                            color: selectedTab == 1 ? Colors.white : const Color(0xFF737373), // สีตามสถานะ
+                            size: 26, // ขนาดไอคอน
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // ----------------- TAB CONTENT -----------------
+              if (selectedTab == 0)
+              // TAB 0 → POSTS GRID (ถ้าเลือก tab 0)
+                GridView.count(
+                  crossAxisCount: 2, // จำนวนคอลัมน์ในกริด = 2
+                  shrinkWrap: true, // ให้ Grid มีขนาดพอดีกับเนื้อหา (ไม่ stretch)
+                  physics: const NeverScrollableScrollPhysics(), // ปิดการเลื่อนภายใน Grid เพื่อให้ Column ควบคุมการเลื่อน
+                  crossAxisSpacing: 2, // ระยะห่างแนวนอนระหว่างรูป
+                  mainAxisSpacing: 2, // ระยะห่างแนวตั้งระหว่างรูป
+                  children: [
+                    _imageBox("https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500"), // รูปตัวอย่างที่ 1
+                    _imageBox("https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500"), // รูปตัวอย่างที่ 2
+                  ],
+                )
+              else
+              // TAB 1 → REELS PAGE (ถ้าเลือก tab 1)
+                Container(
+                  height: 300, // ความสูงสำหรับหน้า Reels ชั่วคราว
+                  alignment: Alignment.center, // จัด widget ตรงกลาง
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center, // จัดแนวกลางทั้งแนวตั้ง
+                    children: const [
+                      Icon(Icons.play_circle_outline, color: Colors.white, size: 80), // ไอคอนเล่นใหญ่
+                      SizedBox(height: 12), // ช่องว่าง
+                      Text(
+                        "Reels", // ข้อความแสดงว่าเป็น Reels
+                        style: TextStyle(color: Colors.white70, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+
+              const SizedBox(height: 20), // ช่องว่างด้านล่างสุด
+            ],
+          ),
         ),
       ),
     );
