@@ -276,7 +276,7 @@ class _SecondPageState extends State<SecondPage> {
         ],
       ),
 
-      // ⭐⭐⭐ เพิ่ม SafeArea แบบคลุมทั้งส่วนของ body ⭐⭐⭐
+      //  เพิ่ม SafeArea แบบคลุมทั้งส่วนของ body
       body: SafeArea(
         child: SingleChildScrollView( // ทำให้เนื้อหาทั้งหมดสามารถเลื่อนลงได้
           child: Column(
@@ -324,11 +324,19 @@ class _SecondPageState extends State<SecondPage> {
                     // Stats (Posts / Followers / Following)
                     Expanded( // ขยายคอลัมน์สถิติให้ใช้พื้นที่ที่เหลือ
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround, // กระจายช่องว่างเท่า ๆ กัน
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          _buildStatColumn("2", "Post"), // จำนวนโพสต์
-                          _buildStatColumn("28", "Follower"), // จำนวนผู้ติดตาม
-                          _buildStatColumn("32", "Following"), // จำนวนที่กำลังติดตาม
+                          _buildStatColumn("2", "Post"),
+
+                          // เส้นคั่น
+                          _verticalDivider(),
+
+                          _buildStatColumn("28", "Follower"),
+
+                          // เส้นคั่น
+                          _verticalDivider(),
+
+                          _buildStatColumn("32", "Following"),
                         ],
                       ),
                     ),
@@ -714,6 +722,15 @@ class FullImagePage extends StatelessWidget {
   }
 }
 
+Widget _verticalDivider() {
+  return Container(
+    height: 40, // ความสูงของเส้น (ปรับได้)
+    width: 2,   // ความหนาเส้น
+    color: const Color(0xFF262626), // สีเทาเข้มแบบ IG
+  );
+}
+
+
 // ----------------- STORY VIEWER ----------------- //
 // หน้า StoryViewer แสดงภาพแบบเต็มหน้าจอและแตะเพื่อปิด
 class StoryViewer extends StatelessWidget {
@@ -735,3 +752,4 @@ class StoryViewer extends StatelessWidget {
     );
   }
 }
+
